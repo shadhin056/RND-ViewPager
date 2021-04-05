@@ -10,7 +10,7 @@
         android:background="@color/colorBlack"
          >
 
-    <include layout="@layout/control_layout"/>
+    <include android:visibility="gone" layout="@layout/control_layout"/>
 
     <com.google.android.material.tabs.TabLayout
             android:layout_width="match_parent"
@@ -18,20 +18,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:tabMode="scrollable"
             app:tabGravity="fill"
-            app:tabIndicatorColor="@android:color/holo_orange_light"
-            app:tabTextColor="@android:color/white"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            app:tabIndicatorColor="@android:color/holo_blue_light"
+            app:tabTextColor="@android:color/black"
+            app:tabSelectedTextColor="@android:color/holo_blue_light"
+            android:background="@color/white"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
             android:id="@+id/tabLayout2"/>
 
     <androidx.viewpager2.widget.ViewPager2
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
             android:id="@+id/viewPager2"/>
 
 </LinearLayout>

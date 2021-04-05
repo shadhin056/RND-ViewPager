@@ -10,11 +10,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.rnd_viewpager.R
 
 class TabAdapter(private val context: Context, private val viewModel: ItemTabViewModel) : RecyclerView.Adapter<TabAdapter.TabViewHolder>() {
-
+    fun getPageWidth(position: Int): Float {
+        return 0.9f
+    }
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): TabViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(
             R.layout.item_mutable,
-            parent, false)
+            parent, false
+        )
         return TabViewHolder(v)
     }
 
@@ -29,16 +32,26 @@ class TabAdapter(private val context: Context, private val viewModel: ItemTabVie
         holder.bind(viewModel.getItemById(itemId), bg)
     }
 
-    inner class TabViewHolder(view : View) : RecyclerView.ViewHolder(view) {
+    inner class TabViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val bgColor: FrameLayout = view.findViewById(R.id.bgItem)
         private val title: AppCompatTextView = view.findViewById(R.id.titleTab)
 
         fun bind(item: String, bg: Int) {
             if(bg % 2 == 0) {
-                bgColor.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_orange_dark))
+                bgColor.setBackgroundColor(
+                    ContextCompat.getColor(
+                        context,
+                        android.R.color.holo_orange_dark
+                    )
+                )
             } else {
-                bgColor.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_blue_bright))
+                bgColor.setBackgroundColor(
+                    ContextCompat.getColor(
+                        context,
+                        android.R.color.holo_blue_bright
+                    )
+                )
             }
             title.text = item
         }

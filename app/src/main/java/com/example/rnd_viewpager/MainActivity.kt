@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         if(Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN) {
             viewPager2.apply {
                 layoutDirection = View.LAYOUT_DIRECTION_RTL
-                currentItem = viewModel.size
+                currentItem = 0
             }
         }
 
@@ -51,26 +51,27 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun changeOrientation() {
-        btnOrientation.setOnClickListener {
+        viewPager2.orientation = ORIENTATION_VERTICAL
+        isHorizontal = false
+        btnOrientation.text = getString(R.string.horizontal)
+       /*
+       btnOrientation.setOnClickListener {
             when {
                 isHorizontal -> {
                     viewPager2.orientation = ORIENTATION_VERTICAL
                     isHorizontal = false
                     btnOrientation.text = getString(R.string.horizontal)
 
-                    viewPager2.setClipToPadding(false);
-                    viewPager2.setPadding(0,0,0,0);
                 }
                 else -> {
                     viewPager2.orientation = ORIENTATION_HORIZONTAL
                     isHorizontal = true
                     btnOrientation.text = getString(R.string.vertical)
 
-                    viewPager2.setClipToPadding(false);
-                    viewPager2.setPadding(0,0,0,0);
                 }
             }
         }
+        */
     }
 
     private fun addPage() {
