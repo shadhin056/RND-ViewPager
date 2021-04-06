@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 
         TabLayoutMediator(tabLayout2, viewPager2) { tab, position ->
             tab.text = viewModel.items[position]
-
+            Log.e("Tab", "inside");
         }.attach()
 
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN) {
@@ -79,6 +79,53 @@ class MainActivity : AppCompatActivity() {
             viewPager2.setCurrentItem(viewPager2.currentItem + 1);
 
         }
+
+
+
+
+        /*
+            tabLayout2.getChildAt(1).setOnClickListener { // custom code
+                   val tab = tabLayout2.getTabAt(1)
+                   tab!!.select()
+                   Log.e("Tab", "1");
+               }
+
+            tabLayout2.getChildAt(2).setOnClickListener { // custom code
+                val tab = tabLayout2.getTabAt(2)
+                tab!!.select()
+                Log.e("Tab", "2");
+            }*/
+
+
+        tabLayout2.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+
+
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab) {}
+            override fun onTabReselected(tab: TabLayout.Tab) {
+
+                when (tab.position) {
+                    0 -> {
+                        Log.e("Tab", "1");
+
+                         sv.scrollTo(0, llFirst.getY().toInt())
+
+                    }
+                    1 -> {
+                        Log.e("Tab", "2");
+                          sv.scrollTo(0, llSecond.getY().toInt())
+                    }
+                    2 -> {
+                        Log.e("Tab", "3");
+                         sv.scrollTo(0, llThird.getY().toInt())
+                    }
+                }
+
+
+            }
+        })
 
 
 
@@ -142,18 +189,18 @@ class MainActivity : AppCompatActivity() {
         })
 
         sv.getViewTreeObserver().addOnScrollChangedListener(OnScrollChangedListener {
-           // val scrollY: Int = rootScrollView.getScrollY() // For ScrollView
+            // val scrollY: Int = rootScrollView.getScrollY() // For ScrollView
             //val scrollX: Int = rootScrollView.getScrollX() // For HorizontalScrollView
             // DO SOMETHING WITH THE SCROLL COORDINATES
 
-            if(getVisiblePercent(llFirst)>10 && getVisiblePercent(llFirst) !=100){
-                Log.e("height first",getVisiblePercent(llFirst).toString());
+            if (getVisiblePercent(llFirst) > 5 && getVisiblePercent(llFirst) != 100) {
+                Log.e("height first", getVisiblePercent(llFirst).toString());
                 viewPager2.setCurrentItem(0);
-            }else if (getVisiblePercent(llSecond)>10 && getVisiblePercent(llSecond) !=100){
-                Log.e("height second",getVisiblePercent(llSecond).toString());
+            } else if (getVisiblePercent(llSecond) > 5 && getVisiblePercent(llSecond) != 100) {
+                Log.e("height second", getVisiblePercent(llSecond).toString());
                 viewPager2.setCurrentItem(1);
-            }else if (getVisiblePercent(llThird)>10 && getVisiblePercent(llThird) !=100){
-                Log.e("height third",getVisiblePercent(llThird).toString());
+            } else if (getVisiblePercent(llThird) > 5 && getVisiblePercent(llThird) != 100) {
+                Log.e("height third", getVisiblePercent(llThird).toString());
                 viewPager2.setCurrentItem(2);
             }
         })
@@ -283,17 +330,22 @@ class MainActivity : AppCompatActivity() {
         if (viewModel.contains(currentItemId)) {
             val newPosition = (0 until viewModel.size).indexOfLast {
                 viewModel.itemId(it) == currentItemId
+
             }
             viewPager2.apply {
                 adapter?.notifyDataSetChanged()
                 currentItem = newPosition + 1
+                Log.e("Tab", currentItem.toString());
             }
         } else {
             viewPager2.apply {
                 currentItem = oldPosition - 1
                 adapter?.notifyDataSetChanged()
-
+                Log.e("Tab", currentItem.toString());
             }
         }
     }
 }
+
+
+
