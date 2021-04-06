@@ -22,6 +22,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var btnOrientation: Button
     lateinit var btnAddPage: Button
     lateinit var btnRemovePage: Button
+    lateinit var btnNext: Button
+    var count=0;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -31,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         btnOrientation=findViewById(R.id.btnOrientation);
         btnAddPage=findViewById(R.id.btnAddPage);
         btnRemovePage=findViewById(R.id.btnRemovePage);
+        btnNext=findViewById(R.id.btnNext);
 
         viewPager2.adapter = TabAdapter(this, viewModel).apply { setHasStableIds(true) }
 
@@ -48,30 +51,38 @@ class MainActivity : AppCompatActivity() {
         changeOrientation()
         addPage()
         removePage()
+
+        btnNext.setOnClickListener {
+            count++
+            viewPager2.setCurrentItem(count);
+
+        }
     }
 
     private fun changeOrientation() {
         viewPager2.orientation = ORIENTATION_VERTICAL
         isHorizontal = false
         btnOrientation.text = getString(R.string.horizontal)
-       /*
-       btnOrientation.setOnClickListener {
-            when {
-                isHorizontal -> {
-                    viewPager2.orientation = ORIENTATION_VERTICAL
-                    isHorizontal = false
-                    btnOrientation.text = getString(R.string.horizontal)
+        viewPager2.setOffscreenPageLimit(3);
 
-                }
-                else -> {
-                    viewPager2.orientation = ORIENTATION_HORIZONTAL
-                    isHorizontal = true
-                    btnOrientation.text = getString(R.string.vertical)
+        /*
+        btnOrientation.setOnClickListener {
+             when {
+                 isHorizontal -> {
+                     viewPager2.orientation = ORIENTATION_VERTICAL
+                     isHorizontal = false
+                     btnOrientation.text = getString(R.string.horizontal)
 
-                }
-            }
-        }
-        */
+                 }
+                 else -> {
+                     viewPager2.orientation = ORIENTATION_HORIZONTAL
+                     isHorizontal = true
+                     btnOrientation.text = getString(R.string.vertical)
+
+                 }
+             }
+         }
+         */
     }
 
     private fun addPage() {

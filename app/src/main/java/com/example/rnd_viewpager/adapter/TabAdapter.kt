@@ -10,9 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.rnd_viewpager.R
 
 class TabAdapter(private val context: Context, private val viewModel: ItemTabViewModel) : RecyclerView.Adapter<TabAdapter.TabViewHolder>() {
-    fun getPageWidth(position: Int): Float {
-        return 0.9f
-    }
+
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): TabViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(
             R.layout.item_mutable,
