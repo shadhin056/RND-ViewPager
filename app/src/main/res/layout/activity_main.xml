@@ -43,8 +43,540 @@
     </Button>
     <androidx.recyclerview.widget.RecyclerView
 
+        android:visibility="gone"
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
          />
+
+    <ScrollView
+        android:id="@+id/sv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/llFirst"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Father's Name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Mother's Name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Spouse Name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Date of birth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Type of business"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Nationality"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="NID"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Passport"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Mobile No"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="TIN"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Monthly Income"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Source of fund"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                android:background="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="5dp">
+
+            </View>
+            <LinearLayout
+                android:id="@+id/llSecond"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Father's Name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Mother's Name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Spouse Name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Date of birth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Type of business"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Nationality"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="NID"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Passport"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Mobile No"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="TIN"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Monthly Income"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Source of fund"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                android:background="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="5dp">
+
+            </View>
+            <LinearLayout
+                android:id="@+id/llThird"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Father's Name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Mother's Name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Spouse Name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Date of birth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Type of business"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Nationality"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="NID"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Passport"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Mobile No"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="TIN"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Monthly Income"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                    <TextView
+                        android:padding="15sp"
+                        android:textColor="@color/app_color_new"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Source of fund"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
 </LinearLayout>

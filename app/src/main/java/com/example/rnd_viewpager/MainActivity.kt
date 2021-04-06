@@ -2,15 +2,17 @@ package com.example.rnd_viewpager
 
 import ItemTabViewModel
 import TabAdapter
-import android.graphics.Color
+import android.graphics.Rect
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewTreeObserver.OnScrollChangedListener
 import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.ScrollView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.get
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -32,7 +34,11 @@ class MainActivity : AppCompatActivity() {
     lateinit var btnOrientation: Button
     lateinit var btnAddPage: Button
     lateinit var btnRemovePage: Button
+    lateinit var sv: ScrollView
     lateinit var btnNext: Button
+    lateinit var llFirst: LinearLayout
+    lateinit var llSecond: LinearLayout
+    lateinit var llThird: LinearLayout
     var count = 0;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,11 +51,16 @@ class MainActivity : AppCompatActivity() {
         btnRemovePage = findViewById(R.id.btnRemovePage);
         btnNext = findViewById(R.id.btnNext);
         recyclerView = findViewById(R.id.recycler_view)
+        sv = findViewById(R.id.sv)
+        llFirst = findViewById(R.id.llFirst)
+        llSecond = findViewById(R.id.llSecond)
+        llThird = findViewById(R.id.llThird)
 
         viewPager2.adapter = TabAdapter(this, viewModel).apply { setHasStableIds(true) }
 
         TabLayoutMediator(tabLayout2, viewPager2) { tab, position ->
             tab.text = viewModel.items[position]
+
         }.attach()
 
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN) {
@@ -82,14 +93,14 @@ class MainActivity : AppCompatActivity() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
 
-                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                     // Log.d("scroll", "idle")
 
-                 } else if (newState == RecyclerView.SCROLL_STATE_SETTLING) {
+                } else if (newState == RecyclerView.SCROLL_STATE_SETTLING) {
                     // Log.d("scroll", "settling")
-                 } else if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
-                     //Log.d("scroll", "dragging")
-                 }
+                } else if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
+                    //Log.d("scroll", "dragging")
+                }
 
 
             }
@@ -103,26 +114,25 @@ class MainActivity : AppCompatActivity() {
 
                     Log.d("scroll---", visiblePosition.toString())
 
-                    if(visiblePosition >= 0 && visiblePosition<5){
+                    if (visiblePosition >= 0 && visiblePosition < 5) {
                         viewPager2.setCurrentItem(0);
-                    }
-                    else if (visiblePosition >= 5 && visiblePosition<10) {
+                    } else if (visiblePosition >= 5 && visiblePosition < 10) {
 
                         viewPager2.setCurrentItem(1);
 
-                    } else if (visiblePosition >= 10 && visiblePosition<15) {
+                    } else if (visiblePosition >= 10 && visiblePosition < 15) {
 
                         viewPager2.setCurrentItem(2);
-                    } else if (visiblePosition >= 15 && visiblePosition<20) {
+                    } else if (visiblePosition >= 15 && visiblePosition < 20) {
 
                         viewPager2.setCurrentItem(3);
-                    } else if (visiblePosition >= 20 && visiblePosition<25) {
+                    } else if (visiblePosition >= 20 && visiblePosition < 25) {
 
                         viewPager2.setCurrentItem(4);
-                    } else if (visiblePosition >= 25 && visiblePosition<30) {
+                    } else if (visiblePosition >= 25 && visiblePosition < 30) {
 
                         viewPager2.setCurrentItem(5);
-                    } else if (visiblePosition >= 30 && visiblePosition<35) {
+                    } else if (visiblePosition >= 30 && visiblePosition < 35) {
 
                         viewPager2.setCurrentItem(6);
                     }
@@ -131,9 +141,34 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+        sv.getViewTreeObserver().addOnScrollChangedListener(OnScrollChangedListener {
+           // val scrollY: Int = rootScrollView.getScrollY() // For ScrollView
+            //val scrollX: Int = rootScrollView.getScrollX() // For HorizontalScrollView
+            // DO SOMETHING WITH THE SCROLL COORDINATES
 
+            if(getVisiblePercent(llFirst)>10 && getVisiblePercent(llFirst) !=100){
+                Log.e("height first",getVisiblePercent(llFirst).toString());
+                viewPager2.setCurrentItem(0);
+            }else if (getVisiblePercent(llSecond)>10 && getVisiblePercent(llSecond) !=100){
+                Log.e("height second",getVisiblePercent(llSecond).toString());
+                viewPager2.setCurrentItem(1);
+            }else if (getVisiblePercent(llThird)>10 && getVisiblePercent(llThird) !=100){
+                Log.e("height third",getVisiblePercent(llThird).toString());
+                viewPager2.setCurrentItem(2);
+            }
+        })
     }
-
+    fun getVisiblePercent(v: View): Int {
+        return if (v.isShown) {
+            val r = Rect()
+            v.getGlobalVisibleRect(r)
+            val sVisible: Double = (r.width() * r.height()).toDouble()
+            val sTotal = (v.width * v.height).toDouble()
+            (100 * sVisible / sTotal).toInt()
+        } else {
+            -1
+        }
+    }
     private fun prepareMovieData() {
         var movie = Movie("Mad Max: Fury Road", "Action & Adventure", "2015")
         movieList.add(movie)
@@ -241,6 +276,9 @@ class MainActivity : AppCompatActivity() {
     private fun changeItem(performChanges: () -> Unit) {
         val oldPosition = viewPager2.currentItem
         val currentItemId = viewModel.itemId(oldPosition)
+
+
+
         performChanges()
         if (viewModel.contains(currentItemId)) {
             val newPosition = (0 until viewModel.size).indexOfLast {
