@@ -7,7 +7,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/colorBlack"
          >
 
     <include android:visibility="gone" layout="@layout/control_layout"/>
@@ -31,6 +30,7 @@
             android:layout_height="500dp"
 
             android:id="@+id/viewPager2"/>
+
     <Button
         android:id="@+id/btnNext"
         android:layout_width="match_parent"
@@ -39,5 +39,9 @@
         >
 
     </Button>
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+         />
 </LinearLayout>

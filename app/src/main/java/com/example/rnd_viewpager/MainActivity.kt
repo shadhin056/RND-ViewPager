@@ -3,17 +3,24 @@ package com.example.rnd_viewpager
 import ItemTabViewModel
 import TabAdapter
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import androidx.viewpager2.widget.ViewPager2.*
+import androidx.viewpager2.widget.ViewPager2.ORIENTATION_VERTICAL
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
-class MainActivity : AppCompatActivity() {
+
+class MainActivity : AppCompatActivity()  {
+    var movieList: java.util.ArrayList<Movie> = java.util.ArrayList<Movie>()
+    private var recyclerView: RecyclerView? = null
+    private var mAdapter: MoviesAdapter? = null
 
     private var isHorizontal : Boolean = true
     private val viewModel : ItemTabViewModel by viewModels()
@@ -34,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         btnAddPage=findViewById(R.id.btnAddPage);
         btnRemovePage=findViewById(R.id.btnRemovePage);
         btnNext=findViewById(R.id.btnNext);
+        recyclerView = findViewById(R.id.recycler_view)
 
         viewPager2.adapter = TabAdapter(this, viewModel).apply { setHasStableIds(true) }
 
@@ -54,11 +62,55 @@ class MainActivity : AppCompatActivity() {
 
         btnNext.setOnClickListener {
             count++
-            viewPager2.setCurrentItem(count);
+            viewPager2.setCurrentItem(viewPager2.currentItem + 1);
 
         }
-    }
 
+
+
+        mAdapter = MoviesAdapter(movieList)
+        val mLayoutManager = LinearLayoutManager(applicationContext)
+        recyclerView!!.setLayoutManager(mLayoutManager)
+        recyclerView!!.setItemAnimator(DefaultItemAnimator())
+        recyclerView!!.setAdapter(mAdapter);
+        prepareMovieData()
+
+    }
+    private fun prepareMovieData() {
+        var movie = Movie("Mad Max: Fury Road", "Action & Adventure", "2015")
+        movieList.add(movie)
+        movie = Movie("Inside Out", "Animation, Kids & Family", "2015")
+        movieList.add(movie)
+        movie = Movie("Star Wars: Episode VII - The Force Awakens", "Action", "2015")
+        movieList.add(movie)
+        movie = Movie("Shaun the Sheep", "Animation", "2015")
+        movieList.add(movie)
+        movie = Movie("The Martian", "Science Fiction & Fantasy", "2015")
+        movieList.add(movie)
+        movie = Movie("Mission: Impossible Rogue Nation", "Action", "2015")
+        movieList.add(movie)
+        movie = Movie("Up", "Animation", "2009")
+        movieList.add(movie)
+        movie = Movie("Star Trek", "Science Fiction", "2009")
+        movieList.add(movie)
+        movie = Movie("The LEGO Movie", "Animation", "2014")
+        movieList.add(movie)
+        movie = Movie("Iron Man", "Action & Adventure", "2008")
+        movieList.add(movie)
+        movie = Movie("Aliens", "Science Fiction", "1986")
+        movieList.add(movie)
+        movie = Movie("Chicken Run", "Animation", "2000")
+        movieList.add(movie)
+        movie = Movie("Back to the Future", "Science Fiction", "1985")
+        movieList.add(movie)
+        movie = Movie("Raiders of the Lost Ark", "Action & Adventure", "1981")
+        movieList.add(movie)
+        movie = Movie("Goldfinger", "Action & Adventure", "1965")
+        movieList.add(movie)
+        movie = Movie("Guardians of the Galaxy", "Science Fiction & Fantasy", "2014")
+        movieList.add(movie)
+        mAdapter!!.notifyDataSetChanged()
+    }
     private fun changeOrientation() {
         viewPager2.orientation = ORIENTATION_VERTICAL
         isHorizontal = false
@@ -87,7 +139,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun addPage() {
         btnAddPage.setOnClickListener {
-            changeItem { viewModel.addNewItem(viewPager2.currentItem+1) }
+            changeItem { viewModel.addNewItem(viewPager2.currentItem + 1) }
         }
     }
 
