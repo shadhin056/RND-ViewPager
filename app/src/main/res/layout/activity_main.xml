@@ -11,7 +11,72 @@
 
     <include android:visibility="gone" layout="@layout/control_layout"/>
 
+    <HorizontalScrollView
+        android:id="@+id/hvIndex"
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/llIndex"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnBasic"
+                android:background="@drawable/round_button_grey"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:padding="10dp"
+                android:text="Basic info"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btnNid"
+                android:background="@drawable/round_button_blue"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="NID Photo"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btnAc"
+                android:background="@drawable/round_button_blue"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:padding="10dp"
+                android:layout_height="wrap_content"
+                android:text="Account Type"
+                android:textAllCaps="false" />
+            <Button
+                android:id="@+id/btnAddress"
+                android:background="@drawable/round_button_blue"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Address"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btnNominee"
+                android:background="@drawable/round_button_blue"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Nominee"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
     <com.google.android.material.tabs.TabLayout
+        android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"

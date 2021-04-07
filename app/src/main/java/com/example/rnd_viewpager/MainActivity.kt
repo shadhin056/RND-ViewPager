@@ -5,10 +5,12 @@ import TabAdapter
 import android.graphics.Rect
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver.OnScrollChangedListener
 import android.widget.Button
+import android.widget.HorizontalScrollView
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import androidx.activity.viewModels
@@ -22,7 +24,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
     var movieList: java.util.ArrayList<Movie> = java.util.ArrayList<Movie>()
     private var recyclerView: RecyclerView? = null
     private var mAdapter: MoviesAdapter? = null
@@ -35,11 +37,19 @@ class MainActivity : AppCompatActivity() {
     lateinit var btnAddPage: Button
     lateinit var btnRemovePage: Button
     lateinit var sv: ScrollView
+    lateinit var hvIndex: HorizontalScrollView
     lateinit var btnNext: Button
+    lateinit var btnBasic: Button
+    lateinit var btnNid: Button
+    lateinit var btnAc: Button
+    lateinit var btnNominee: Button
+    lateinit var llIndex: LinearLayout
     lateinit var llFirst: LinearLayout
     lateinit var llSecond: LinearLayout
     lateinit var llThird: LinearLayout
-    var count = 0;
+    var countForNominee = 0;
+    var countForBasic = 0;
+    var countForNID = 0;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -55,6 +65,17 @@ class MainActivity : AppCompatActivity() {
         llFirst = findViewById(R.id.llFirst)
         llSecond = findViewById(R.id.llSecond)
         llThird = findViewById(R.id.llThird)
+        btnBasic = findViewById(R.id.btnBasic)
+        btnNid = findViewById(R.id.btnNid)
+        btnAc = findViewById(R.id.btnAc)
+        llIndex = findViewById(R.id.llIndex)
+        btnNominee = findViewById(R.id.btnNominee)
+        hvIndex = findViewById(R.id.hvIndex)
+
+        llIndex.setOnClickListener(this);
+        btnBasic.setOnClickListener(this);
+        btnNid.setOnClickListener(this);
+        btnAc.setOnClickListener(this);
 
         viewPager2.adapter = TabAdapter(this, viewModel).apply { setHasStableIds(true) }
 
@@ -75,7 +96,7 @@ class MainActivity : AppCompatActivity() {
         removePage()
 
         btnNext.setOnClickListener {
-            count++
+
             viewPager2.setCurrentItem(viewPager2.currentItem + 1);
 
         }
@@ -110,16 +131,16 @@ class MainActivity : AppCompatActivity() {
                     0 -> {
                         Log.e("Tab", "1");
 
-                         sv.scrollTo(0, llFirst.getY().toInt())
+                        sv.scrollTo(0, llFirst.getY().toInt())
 
                     }
                     1 -> {
                         Log.e("Tab", "2");
-                          sv.scrollTo(0, llSecond.getY().toInt())
+                        sv.scrollTo(0, llSecond.getY().toInt())
                     }
                     2 -> {
                         Log.e("Tab", "3");
-                         sv.scrollTo(0, llThird.getY().toInt())
+                        sv.scrollTo(0, llThird.getY().toInt())
                     }
                 }
 
@@ -162,26 +183,27 @@ class MainActivity : AppCompatActivity() {
                     Log.d("scroll---", visiblePosition.toString())
 
                     if (visiblePosition >= 0 && visiblePosition < 5) {
-                        viewPager2.setCurrentItem(0);
+
+                        // viewPager2.setCurrentItem(0);
                     } else if (visiblePosition >= 5 && visiblePosition < 10) {
 
-                        viewPager2.setCurrentItem(1);
+                        // viewPager2.setCurrentItem(1);
 
                     } else if (visiblePosition >= 10 && visiblePosition < 15) {
 
-                        viewPager2.setCurrentItem(2);
+                        // viewPager2.setCurrentItem(2);
                     } else if (visiblePosition >= 15 && visiblePosition < 20) {
 
-                        viewPager2.setCurrentItem(3);
+                        //viewPager2.setCurrentItem(3);
                     } else if (visiblePosition >= 20 && visiblePosition < 25) {
 
-                        viewPager2.setCurrentItem(4);
+                        // viewPager2.setCurrentItem(4);
                     } else if (visiblePosition >= 25 && visiblePosition < 30) {
 
-                        viewPager2.setCurrentItem(5);
+                        // viewPager2.setCurrentItem(5);
                     } else if (visiblePosition >= 30 && visiblePosition < 35) {
 
-                        viewPager2.setCurrentItem(6);
+                        // viewPager2.setCurrentItem(6);
                     }
 
                 }
@@ -195,15 +217,67 @@ class MainActivity : AppCompatActivity() {
 
             if (getVisiblePercent(llFirst) > 5 && getVisiblePercent(llFirst) != 100) {
                 Log.e("height first", getVisiblePercent(llFirst).toString());
+                btnBasic.setBackgroundResource(R.drawable.round_button_grey);
+                btnNid.setBackgroundResource(R.drawable.round_button_blue);
+                btnAc.setBackgroundResource(R.drawable.round_button_blue);
                 viewPager2.setCurrentItem(0);
+                countForNominee=0
+                countForNID=0
+                countForBasic++
+                if(countForBasic==1){
+                    focusOnView(hvIndex, btnBasic)
+                }
+                // scrollToInvalidInputView(hvIndex, btnBasic)
             } else if (getVisiblePercent(llSecond) > 5 && getVisiblePercent(llSecond) != 100) {
                 Log.e("height second", getVisiblePercent(llSecond).toString());
                 viewPager2.setCurrentItem(1);
+                btnBasic.setBackgroundResource(R.drawable.round_button_blue);
+                btnNid.setBackgroundResource(R.drawable.round_button_grey);
+                btnAc.setBackgroundResource(R.drawable.round_button_blue);
+                // scrollToInvalidInputView(hvIndex, btnNid)
+                countForNominee=0
+                countForBasic=0
+                countForNID++
+                if(countForNID==1){
+                    focusOnView(hvIndex, btnNid)
+                }
             } else if (getVisiblePercent(llThird) > 5 && getVisiblePercent(llThird) != 100) {
                 Log.e("height third", getVisiblePercent(llThird).toString());
                 viewPager2.setCurrentItem(2);
+                btnNominee.setBackgroundResource(R.drawable.round_button_grey);
+                btnNid.setBackgroundResource(R.drawable.round_button_blue);
+                btnBasic.setBackgroundResource(R.drawable.round_button_blue);
+                //  hvIndex.scrollTo(0, btnNominee.getX().toInt())
+                //hvIndex.requestFocus();
+                countForNominee++
+                countForBasic=0
+                countForNID=0
+                if(countForNominee==1){
+                    focusOnView(hvIndex, btnNominee)
+                }
+
+
+               // hvIndex.post(Runnable { hvIndex.smoothScrollTo(0, btnNominee.getTop()) })
+
             }
         })
+    }
+    private fun focusCenterOnView(scroll: HorizontalScrollView, view: View) {
+
+            val centreX = (view.x + view.width / 2).toInt()
+            val centreY = (view.y + view.height / 2).toInt()
+            scroll.smoothScrollBy(centreX, centreY)
+
+    }
+    fun scrollToInvalidInputView(scrollView: HorizontalScrollView, view: View) {
+        var view = view
+        var vTop = view.top
+        while (view.parent !is HorizontalScrollView) {
+            view = view.parent as View
+            vTop += view.top
+        }
+        val scrollPosition = vTop
+        Handler().post { scrollView.smoothScrollTo(0, scrollPosition) }
     }
     fun getVisiblePercent(v: View): Int {
         return if (v.isShown) {
@@ -215,6 +289,14 @@ class MainActivity : AppCompatActivity() {
         } else {
             -1
         }
+    }
+    private fun focusOnView(scroll: HorizontalScrollView, view: View) {
+
+            val vLeft = view.left
+            val vRight = view.right
+            val sWidth = scroll.width
+            scroll.smoothScrollTo((vLeft + vRight - sWidth) / 2, 0)
+
     }
     private fun prepareMovieData() {
         var movie = Movie("Mad Max: Fury Road", "Action & Adventure", "2015")
@@ -342,6 +424,20 @@ class MainActivity : AppCompatActivity() {
                 currentItem = oldPosition - 1
                 adapter?.notifyDataSetChanged()
                 Log.e("Tab", currentItem.toString());
+            }
+        }
+    }
+
+    override fun onClick(v: View?) {
+        when (v!!.id) {
+            R.id.btnBasic -> {
+                sv.scrollTo(0, llFirst.getY().toInt())
+            }
+            R.id.btnNid -> {
+                sv.scrollTo(0, llSecond.getY().toInt())
+            }
+            R.id.btnAc -> {
+                sv.scrollTo(0, llThird.getY().toInt())
             }
         }
     }

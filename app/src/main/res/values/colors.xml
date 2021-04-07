@@ -14,4 +14,6 @@
     <color name="year">#999999</color>
     <color name="title">#222222</color>
     <color name="app_color_new">#2D74BE</color>
+    <color name="blue_900">#0D47A1</color>
+    <color name="gray_light">#EDE9E9</color>
 </resources>
