@@ -2,6 +2,7 @@ package com.example.rnd_viewpager
 
 import ItemTabViewModel
 import TabAdapter
+import android.graphics.Color
 import android.graphics.Rect
 import android.os.Build
 import android.os.Bundle
@@ -217,9 +218,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             if (getVisiblePercent(llFirst) > 5 && getVisiblePercent(llFirst) != 100) {
                 Log.e("height first", getVisiblePercent(llFirst).toString());
-                btnBasic.setBackgroundResource(R.drawable.round_button_grey);
-                btnNid.setBackgroundResource(R.drawable.round_button_blue);
-                btnAc.setBackgroundResource(R.drawable.round_button_blue);
+
+                btnBasic.setBackgroundResource(R.drawable.bottom_blue);
+                btnBasic.setTextColor(getResources().getColor(R.color.app_color_new));
+
+                btnNid.setBackgroundResource(R.drawable.bottom_white);
+                btnNid.setTextColor(getResources().getColor(R.color.black));
+
+                btnAc.setBackgroundResource(R.drawable.bottom_white);
+                btnAc.setTextColor(getResources().getColor(R.color.black));
+
+
                 viewPager2.setCurrentItem(0);
                 countForNominee=0
                 countForNID=0
@@ -231,9 +240,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             } else if (getVisiblePercent(llSecond) > 5 && getVisiblePercent(llSecond) != 100) {
                 Log.e("height second", getVisiblePercent(llSecond).toString());
                 viewPager2.setCurrentItem(1);
-                btnBasic.setBackgroundResource(R.drawable.round_button_blue);
-                btnNid.setBackgroundResource(R.drawable.round_button_grey);
-                btnAc.setBackgroundResource(R.drawable.round_button_blue);
+                btnBasic.setBackgroundResource(R.drawable.bottom_white);
+                btnBasic.setTextColor(getResources().getColor(R.color.black));
+
+                btnNid.setBackgroundResource(R.drawable.bottom_blue);
+                btnNid.setTextColor(getResources().getColor(R.color.app_color_new));
+
+                btnAc.setTextColor(getResources().getColor(R.color.black));
+                btnAc.setBackgroundResource(R.drawable.bottom_white);
                 // scrollToInvalidInputView(hvIndex, btnNid)
                 countForNominee=0
                 countForBasic=0
@@ -244,9 +258,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             } else if (getVisiblePercent(llThird) > 5 && getVisiblePercent(llThird) != 100) {
                 Log.e("height third", getVisiblePercent(llThird).toString());
                 viewPager2.setCurrentItem(2);
-                btnNominee.setBackgroundResource(R.drawable.round_button_grey);
-                btnNid.setBackgroundResource(R.drawable.round_button_blue);
-                btnBasic.setBackgroundResource(R.drawable.round_button_blue);
+
+                btnNominee.setBackgroundResource(R.drawable.bottom_blue);
+                btnNominee.setTextColor(getResources().getColor(R.color.app_color_new));
+
+                btnNid.setBackgroundResource(R.drawable.bottom_white);
+                btnNid.setTextColor(getResources().getColor(R.color.black));
+
+                btnBasic.setBackgroundResource(R.drawable.bottom_white);
+                btnBasic.setTextColor(getResources().getColor(R.color.black));
                 //  hvIndex.scrollTo(0, btnNominee.getX().toInt())
                 //hvIndex.requestFocus();
                 countForNominee++

@@ -24,48 +24,52 @@
 
             <Button
                 android:id="@+id/btnBasic"
-                android:background="@drawable/round_button_grey"
+                android:background="@drawable/bottom_blue"
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:stateListAnimator="@null"
                 android:padding="10dp"
                 android:text="Basic info"
                 android:textAllCaps="false" />
 
             <Button
                 android:id="@+id/btnNid"
-                android:background="@drawable/round_button_blue"
-                android:textColor="@color/white"
+                android:background="@drawable/bottom_white"
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="NID Photo"
+                android:stateListAnimator="@null"
                 android:textAllCaps="false" />
 
             <Button
                 android:id="@+id/btnAc"
-                android:background="@drawable/round_button_blue"
-                android:textColor="@color/white"
+                android:background="@drawable/bottom_white"
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:padding="10dp"
+                android:stateListAnimator="@null"
                 android:layout_height="wrap_content"
                 android:text="Account Type"
                 android:textAllCaps="false" />
             <Button
                 android:id="@+id/btnAddress"
-                android:background="@drawable/round_button_blue"
-                android:textColor="@color/white"
+                android:background="@drawable/bottom_white"
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
+                android:stateListAnimator="@null"
                 android:text="Address"
                 android:textAllCaps="false" />
 
             <Button
                 android:id="@+id/btnNominee"
-                android:background="@drawable/round_button_blue"
-                android:textColor="@color/white"
+                android:stateListAnimator="@null"
+                android:background="@drawable/bottom_white"
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
@@ -86,7 +90,7 @@
             app:tabIndicatorColor="@android:color/holo_blue_light"
             app:tabTextColor="@android:color/black"
             app:tabSelectedTextColor="@android:color/holo_blue_light"
-            android:background="@color/white"
+            android:background="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/tabLayout2"/>
 
