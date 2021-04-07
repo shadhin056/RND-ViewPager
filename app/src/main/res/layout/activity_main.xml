@@ -25,7 +25,7 @@
             <Button
                 android:id="@+id/btnBasic"
                 android:background="@drawable/bottom_blue"
-                android:textColor="@color/black"
+                android:textColor="@color/app_color_new"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:stateListAnimator="@null"
